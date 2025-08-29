@@ -5,15 +5,17 @@ import { tempo } from "tempo-devtools/dist/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tempo()],
+  // Only enable the Tempo plugin when running inside Tempo
+  plugins: [react(), ...(process.env.TEMPO === "true" ? [tempo()] : [])],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
   server: {
+    // Only relax allowed hosts inside Tempo
     // @ts-ignore
-    allowedHosts: true,
+    allowedHosts: process.env.TEMPO === "true" ? true : undefined,
   },
   // Use esbuild to avoid terser dependency and still drop console/debugger
   esbuild: {
