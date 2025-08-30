@@ -9,7 +9,7 @@ function TempoRoutes() {
 
   useEffect(() => {
     if (import.meta.env.VITE_TEMPO === "true") {
-      import("tempo-routes")
+      import(/* @vite-ignore */ "tempo-routes")
         .then((mod) => setTempoRoutes(mod.default || []))
         .catch(() => setTempoRoutes([]));
     }
