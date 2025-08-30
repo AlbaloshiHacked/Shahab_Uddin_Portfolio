@@ -11,6 +11,7 @@ import {
 import PortfolioGrid from "./PortfolioGrid";
 import CaseStudySection from "./CaseStudySection";
 import ContactSection from "./ContactSection";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -70,7 +71,7 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section (Animated) */}
       <section id="hero" className="pt-32 pb-20 relative overflow-hidden">
         {/* Split Background */}
         <div className="absolute inset-0 flex">
@@ -81,53 +82,98 @@ const Home = () => {
         </div>
 
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
-          <div className="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+          <motion.div
+            className="md:w-1/2 mb-10 md:mb-0 md:pr-8"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h1 className="text-4xl md:text-5xl font-bold text-[#1E1E1E] mb-4">
               Hello, I&apos;m{" "}
               <span className="text-[#FFD43B]">Shahab Uddin</span>
             </h1>
-            <h2 className="text-xl md:text-2xl font-medium text-[#1E1E1E] mb-6">
+            <motion.h2
+              className="text-xl md:text-2xl font-medium text-[#1E1E1E] mb-6"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            >
               Graphic Designer | Creative Visual Storyteller | Branding &
               Digital Design | Final-Year IT Student
-            </h2>
-            <p className="text-gray-600 mb-8 max-w-lg">
+            </motion.h2>
+            <motion.p
+              className="text-gray-600 mb-8 max-w-lg"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
               I specialize in Graphic Design, Logo Design, Branding &amp;
               Identity, Video Editing, Image Editing, Thumbnails, and Digital
               Design.
-            </p>
-            <Button
-              onClick={() => handleScroll("portfolio")}
-              className="bg-[#FFD43B] text-[#1E1E1E] hover:bg-[#FFD43B]/90 px-8 py-6 text-lg"
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             >
-              View My Work <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
+              <Button
+                onClick={() => handleScroll("portfolio")}
+                className="bg-[#FFD43B] text-[#1E1E1E] hover:bg-[#FFD43B]/90 px-8 py-6 text-lg"
+              >
+                View My Work <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
+          </motion.div>
 
           <div className="md:w-1/2 flex justify-center md:pl-8">
-            <div className="relative">
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            >
               <div className="relative rounded-full p-1.5 md:p-2 bg-gradient-to-br from-[#FFD43B] via-[#FFC300] to-transparent shadow-2xl">
                 <div className="rounded-full bg-white/80 p-1">
-                  <img
+                  {/* Floatable profile picture */}
+                  <motion.img
                     src="https://res.cloudinary.com/dv5kwhrj9/image/upload/v1756359843/Image_1_xgpnth.png"
                     alt="Shahab Uddin"
                     className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover ring-4 ring-white shadow-2xl"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                   />
                 </div>
               </div>
               <div className="absolute -z-10 inset-0 rounded-full bg-[#FFD43B]/30 blur-3xl"></div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section (Animated) */}
       <section id="about" className="py-20 bg-[#F9F9F9] md:bg-[#F9F9F9]">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             About <span className="text-[#FFD43B]">Me</span>
-          </h2>
+          </motion.h2>
           <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0">
+            <motion.div
+              className="md:w-1/2 mb-10 md:mb-0"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <p className="text-gray-700 mb-6 leading-relaxed">
                 I&apos;m Shahab Uddin, a passionate graphic designer with 3
                 years of experience in creating impactful visuals. My journey
@@ -160,8 +206,14 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="md:w-1/2 md:pl-10 flex justify-center">
+            </motion.div>
+            <motion.div
+              className="md:w-1/2 md:pl-10 flex justify-center"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            >
               <div className="relative">
                 <div className="absolute -z-10 w-full h-full bg-[#FFD43B] rounded-lg -bottom-4 -right-4"></div>
                 <img
@@ -170,12 +222,12 @@ const Home = () => {
                   className="w-full max-w-md rounded-lg object-cover shadow-lg"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Section */}
+      {/* Portfolio Section (unchanged) */}
       <section id="portfolio" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
@@ -185,7 +237,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Case Studies Section */}
+      {/* Case Studies Section (unchanged) */}
       <section id="case-studies" className="py-20 bg-[#F9F9F9]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
@@ -195,7 +247,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section (unchanged) */}
       <section className="py-20 bg-[#1E1E1E]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">
