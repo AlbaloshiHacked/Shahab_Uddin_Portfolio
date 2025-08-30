@@ -121,7 +121,7 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg[#F9F9F9] md:bg-[#F9F9F9]">
+      <section id="about" className="py-20 bg-[#F9F9F9] md:bg-[#F9F9F9]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             About <span className="text-[#FFD43B]">Me</span>

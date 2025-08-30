@@ -9,7 +9,9 @@ function TempoRoutes() {
 
   useEffect(() => {
     if (import.meta.env.VITE_TEMPO === "true") {
-      import(/* @vite-ignore */ "tempo-routes")
+      // Build the module id dynamically so Rollup doesn't try to resolve it during production builds
+      const tempoModuleId = "tempo-" + "routes";
+      import(/* @vite-ignore */ tempoModuleId)
         .then((mod) => setTempoRoutes(mod.default || []))
         .catch(() => setTempoRoutes([]));
     }
