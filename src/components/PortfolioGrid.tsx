@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
@@ -59,12 +58,9 @@ const PortfolioGrid = ({
       {/* Portfolio Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => (
-          <motion.div
+          <div
             key={item.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="group relative overflow-hidden rounded-lg shadow-md cursor-pointer"
+            className="group relative overflow-hidden rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105"
           >
             <Dialog>
               <DialogTrigger asChild>
@@ -74,8 +70,8 @@ const PortfolioGrid = ({
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-200 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       <Button
                         variant="default"
                         className="bg-[#FFD43B] text-[#1E1E1E] hover:bg-[#FFD43B]/90"
@@ -144,7 +140,7 @@ const PortfolioGrid = ({
                   item.category}
               </p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
